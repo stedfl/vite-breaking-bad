@@ -1,11 +1,13 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
 import AppCharacterList from './components/AppCharacterList.vue';
+import AppFilterCategory from './components/AppFilterCategory.vue';
 export default {
   name: 'App',
   components: {
     AppHeader,
-    AppCharacterList
+    AppCharacterList,
+    AppFilterCategory
   },
   data() {
     return {
@@ -19,6 +21,7 @@ export default {
 <template>
   <AppHeader :title='title'/>
   <main>
+    <AppFilterCategory/>
     <AppCharacterList/>
   </main>
   
