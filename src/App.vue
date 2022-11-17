@@ -2,6 +2,9 @@
 import AppHeader from './components/AppHeader.vue';
 import AppCharacterList from './components/AppCharacterList.vue';
 import AppFilterCategory from './components/AppFilterCategory.vue';
+import {store} from './data/store';
+import {getApiData} from './data/dataMethods';
+
 export default {
   name: 'App',
   components: {
@@ -11,10 +14,14 @@ export default {
   },
   data() {
     return {
-      title: 'Breaking Bad'
+      store,
+      title: 'Breaking Bad',
+      getApiData
     }
+  },
+  mounted() {
+    getApiData(store.apiUrl, store.CharactersData);
   }
-
 }
 </script>
 
