@@ -13,7 +13,7 @@ export default {
 <template>
   <div class="container p-5">
     <div class="number-results p-2">
-      <h3>Found n° characters</h3>
+      <h3>Found characters</h3>
     </div>
     <div class="row">
       <div v-for="character in store.CharactersData" :key="character.char_id" class="bb-card col-3">

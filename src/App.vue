@@ -20,7 +20,9 @@ export default {
     }
   },
   mounted() {
-    getApiData(store.apiUrl, store.CharactersData);
+    getApiData(store.apiUrl).then((results) => {
+      store.CharactersData = results.data;
+    })
   }
 }
 </script>
