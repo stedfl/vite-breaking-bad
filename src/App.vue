@@ -22,6 +22,7 @@ export default {
   mounted() {
     getApiData(store.apiUrl).then((results) => {
       store.CharactersData = results.data;
+      store.CharactersDataLength = store.CharactersData.length;
     })
   }
 }
