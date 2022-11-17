@@ -1,0 +1,9 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import './partials/variables';
+@import 'node_modules/@fontsource/montserrat/index.css';
+@import 'node_modules/@fontsource/montserrat/700.css';
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: red;
+}
