@@ -15,10 +15,7 @@ export default {
     <img src="Breaking_Bad_logo.svg" alt="logo breaking bad">
     <h1 class="ms-3">{{store.title}}</h1>
   </header>
-  
 </template>
-
-
 
 <style lang="scss" scoped>
 header {
@@ -32,5 +29,4 @@ img {
 h1 {
   font-weight: 700;
 }
-
 </style>

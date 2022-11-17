@@ -18,26 +18,30 @@ export default {
       getApiData
     }
   },
+  methods: {
+    getCharacterList() {
+      store.isLoaded = false;
+      getApiData(store.apiUrl).then((results) => {
+        store.CharactersData = results.data;
+        store.CharactersDataLength = store.CharactersData.length;
+        store.isLoaded = true;
+      })
+    }
+  },
   mounted() {
-    getApiData(store.apiUrl).then((results) => {
-      store.CharactersData = results.data;
-      store.CharactersDataLength = store.CharactersData.length;
-      store.isLoaded = true;
-    })
+    this.getCharacterList();
   }
 }
 </script>
 
 <template>
-  <AppHeader :title='title'/>
+  <AppHeader/>
   <main class="pb-5">
     <AppFilterCategory/>
     <AppCharacterList/>
   </main>
   
 </template>
-
-
 
 <style lang="scss">
 @use './styles/general.scss' as *;

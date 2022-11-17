@@ -22,6 +22,7 @@ export default {
 
 <style lang="scss" scoped>
 @use '../styles/partials/variables' as *;
+
 img {
   height: 320px;
   width: 100%;

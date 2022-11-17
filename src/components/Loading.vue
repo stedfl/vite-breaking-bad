@@ -10,12 +10,14 @@ export default {
 
 
 <style en="scss" scoped>
+
 .lds-grid {
   display: inline-block;
   position: relative;
   width: 80px;
   height: 80px;
 }
+
 .lds-grid div {
   position: absolute;
   width: 16px;

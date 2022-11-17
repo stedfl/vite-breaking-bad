@@ -30,9 +30,7 @@ export default {
       <Loading/>
       <span class="ms-2">{{store.title}} is Loading</span>
     </div>
-    
   </div>
-  
 </template>
 
 
