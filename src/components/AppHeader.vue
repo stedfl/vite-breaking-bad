@@ -1,8 +1,11 @@
 <script>
+import {store} from '../data/store';
 export default {
   name: 'AppHeader',
-  props: {
-    title: String
+  data() {
+    return {
+      store
+    }
   }
 }
 </script>
@@ -10,7 +13,7 @@ export default {
 <template>
   <header class="d-flex p-3">
     <img src="Breaking_Bad_logo.svg" alt="logo breaking bad">
-    <h1 class="ms-3">{{title}}</h1>
+    <h1 class="ms-3">{{store.title}}</h1>
   </header>
   
 </template>

@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-  <div  class="col-3 p-4">
+  <div  class="col-md-6 col-lg-3 p-4">
     <div class="bb-card p-3">
       <img :src="character.img" :alt="character.name">
       <h3 class="mt-2">{{character.name}}</h3>
@@ -23,9 +23,10 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/partials/variables' as *;
 img {
-  height: 300px;
+  height: 320px;
   width: 100%;
   object-fit: cover;
+  object-position: top;
 }
 
 .bb-card {

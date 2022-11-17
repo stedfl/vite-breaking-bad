@@ -15,7 +15,6 @@ export default {
   data() {
     return {
       store,
-      title: 'Breaking Bad',
       getApiData
     }
   },
@@ -23,6 +22,7 @@ export default {
     getApiData(store.apiUrl).then((results) => {
       store.CharactersData = results.data;
       store.CharactersDataLength = store.CharactersData.length;
+      store.isLoaded = true;
     })
   }
 }
@@ -30,7 +30,7 @@ export default {
 
 <template>
   <AppHeader :title='title'/>
-  <main>
+  <main class="pb-5">
     <AppFilterCategory/>
     <AppCharacterList/>
   </main>
