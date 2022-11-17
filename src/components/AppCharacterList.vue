@@ -1,6 +1,12 @@
 <script>
+import {store} from '../data/store';
 export default {
-  name: 'AppCharacterList'
+  name: 'AppCharacterList',
+  data() {
+    return {
+      store
+    }
+  }
 }
 </script>
 
@@ -9,7 +15,11 @@ export default {
     <div class="number-results p-2">
       <h3>Found n° characters</h3>
     </div>
-
+    <div class="row">
+      <div v-for="character in store.CharactersData" :key="character.char_id" class="bb-card col-3">
+        <h4>{{character.name}}</h4>
+      </div>
+    </div>
   </div>
   
 </template>
