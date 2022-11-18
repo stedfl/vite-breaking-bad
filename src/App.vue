@@ -19,38 +19,42 @@ export default {
   },
   methods: {
     getCharacterList() {
-      store.isLoaded = false;
       axios.get(store.apiUrl)
         .then((results) => {
-          store.CharactersData = results.data;
-          store.isLoaded = true;
-          if(!store.Categories.length) {
-            store.CharactersData.forEach((character) => {
-              if(!store.Categories.includes(character.category)) {
-                store.Categories.push(character.category)
+          store.charactersData = results.data;
+          store.filteredData = store.charactersData;
+          if(!store.categoriesList.length || !store.statusList.length ) {
+            store.charactersData.forEach((character) => {
+              if(!store.categoriesList.includes(character.category)) {
+                store.categoriesList.push(character.category)
+              };
+              if (!store.statusList.includes(character.status)) {
+                store.statusList.push(character.status)
               }
             })
           }
+          store.isLoaded = true;
       })
     },
-    getSelectedCharacter() {
+    getSelectedCategory() {
       store.isLoaded = false;
       axios.get(store.apiUrl, {
         params: {
-          category: store.statusSearch
+          category: store.categorySearch,
         }
       })
       .then((results) => {
-          store.CharactersData = results.data;
+          store.charactersData = results.data;
+          this.getSelectedStatus();
           store.isLoaded = true;
       })
     },
-    getSelectOption() {
-      axios.get(store.apiUrl)
-        .then((results) => {
-          store.CharactersData = results.data;
-          store.isLoaded = true;
-      })
+    getSelectedStatus() {
+      if(!(store.statusSearch === "")) {
+        store.filteredData = store.charactersData.filter((character) => character.status === store.statusSearch);
+      } else {
+        store.filteredData = store.charactersData;
+      }
     }
   },
   mounted() {
@@ -62,7 +66,7 @@ export default {
 <template>
   <AppHeader/>
   <main class="pb-5">
-    <AppFilterCategory @search="getSelectedCharacter"/>
+    <AppFilterCategory @searchCategory="getSelectedCategory" @searchStatus="getSelectedStatus"/>
     <AppCharacterList/>
   </main>
   

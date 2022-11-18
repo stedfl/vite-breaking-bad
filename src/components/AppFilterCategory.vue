@@ -12,20 +12,24 @@ export default {
 
 <template>
   <div class="container">
-    <select v-model="store.statusSearch" @change="$emit('search')" class="form-select my-5" aria-label="Default select example">
-      <option selected value="">Select Category</option>
-      <option v-for="category, index in store.Categories" :key="index" :value="category">{{category}}</option>
-    </select>
+    <div class="row">
+      <div class="col-auto">
+        <select v-model="store.categorySearch" @change="$emit('searchCategory')" class="form-select my-5" aria-label="Default select example">
+          <option selected value="">Select Category</option>
+          <option v-for="category, index in store.categoriesList" :key="index" :value="category">{{category}}</option>
+        </select>
+      </div>
+      <div class="col-auto">
+        <select v-model="store.statusSearch" @change="$emit('searchStatus')" class="form-select my-5" aria-label="Default select example">
+          <option selected value="">Select Status</option>
+          <option v-for="status, index in store.statusList" :key="index" :value="status">{{status}}</option>
+        </select>
+      </div>
+    </div>
+    
   </div>
 </template>
 
 <style lang="scss" scoped>
-.form-select {
-  width: 25%;
-}
-@media screen and (max-width: 768px) {
-  .form-select {
-    width: 100%;
-  }
-}
+
 </style>

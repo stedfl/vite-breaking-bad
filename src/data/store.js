@@ -2,8 +2,11 @@ import { reactive } from "vue";
 export const store = reactive ({
     apiUrl: 'https://www.breakingbadapi.com/api/characters',
     title: 'Breaking Bad',
-    CharactersData: [],
+    charactersData: [],
+    filteredData: [],
+    categorySearch: '',
+    categoriesList: [],
     statusSearch: '',
-    Categories: [],
+    statusList: [],
     isLoaded: false
 }) 

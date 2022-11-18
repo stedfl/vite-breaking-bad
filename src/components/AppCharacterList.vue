@@ -15,7 +15,14 @@ export default {
   },
   computed: {
     outputResultsData() {
-      return store.CharactersData.length;
+      let esseLetter = '';
+      if(store.filteredData.length) {
+        if (store.filteredData.length > 1) {
+          esseLetter = 's'
+        }
+        return `Found ${store.filteredData.length} Character${esseLetter}`;
+      }
+      return "No Characters Found"
     }
   }
 }
@@ -25,10 +32,10 @@ export default {
   <div class="container">
     <div v-if="store.isLoaded" class="container-cards p-5">
       <div class="number-results p-2">
-        <h3>Found {{outputResultsData}} characters</h3>
+        <h3>{{outputResultsData}}</h3>
       </div>
       <div class="row">
-        <CharacterPrint v-for="character in store.CharactersData" :key="character.char_id" :character='character'/>
+        <CharacterPrint v-for="character in store.filteredData" :key="character.char_id" :character='character'/>
       </div>
     </div>
     <div v-else class="loading-container d-flex align-items-center">
