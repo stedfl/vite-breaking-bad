@@ -12,6 +12,11 @@ export default {
     return {
       store
     }
+  },
+  computed: {
+    outputResultsData() {
+      return store.CharactersData.length;
+    }
   }
 }
 </script>
@@ -20,7 +25,7 @@ export default {
   <div class="container">
     <div v-if="store.isLoaded" class="container-cards p-5">
       <div class="number-results p-2">
-        <h3>Found {{store.CharactersData.length}} characters</h3>
+        <h3>Found {{outputResultsData}} characters</h3>
       </div>
       <div class="row">
         <CharacterPrint v-for="character in store.CharactersData" :key="character.char_id" :character='character'/>
