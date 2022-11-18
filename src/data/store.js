@@ -4,5 +4,6 @@ export const store = reactive ({
     title: 'Breaking Bad',
     CharactersData: [],
     statusSearch: '',
+    Categories: [],
     isLoaded: false
 }) 

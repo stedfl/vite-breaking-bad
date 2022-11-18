@@ -24,6 +24,13 @@ export default {
         .then((results) => {
           store.CharactersData = results.data;
           store.isLoaded = true;
+          if(!store.Categories.length) {
+            store.CharactersData.forEach((character) => {
+              if(!store.Categories.includes(character.category)) {
+                store.Categories.push(character.category)
+              }
+            })
+          }
       })
     },
     getSelectedCharacter() {
@@ -34,6 +41,13 @@ export default {
         }
       })
       .then((results) => {
+          store.CharactersData = results.data;
+          store.isLoaded = true;
+      })
+    },
+    getSelectOption() {
+      axios.get(store.apiUrl)
+        .then((results) => {
           store.CharactersData = results.data;
           store.isLoaded = true;
       })
