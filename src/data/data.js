@@ -1,12 +1,6 @@
 const categories = [
-  {
-    title: 'Breaking Bad',
-    id: 'breaking-bad'
-  },
-  {
-    title: 'Better Call Saul',
-    id: 'better-call-saul'
-  }
+  'Breaking Bad',
+  'Better Call Saul',
 ]
 
 export {categories};

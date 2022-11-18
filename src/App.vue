@@ -1,9 +1,9 @@
 <script>
+import axios from 'axios';
 import AppHeader from './components/AppHeader.vue';
 import AppCharacterList from './components/AppCharacterList.vue';
 import AppFilterCategory from './components/AppFilterCategory.vue';
 import {store} from './data/store';
-import {getApiData} from './data/dataMethods';
 
 export default {
   name: 'App',
@@ -15,16 +15,27 @@ export default {
   data() {
     return {
       store,
-      getApiData
     }
   },
   methods: {
     getCharacterList() {
       store.isLoaded = false;
-      getApiData(store.apiUrl).then((results) => {
-        store.CharactersData = results.data;
-        store.CharactersDataLength = store.CharactersData.length;
-        store.isLoaded = true;
+      axios.get(store.apiUrl)
+        .then((results) => {
+          store.CharactersData = results.data;
+          store.isLoaded = true;
+      })
+    },
+    getSelectedCharacter() {
+      store.isLoaded = false;
+      axios.get(store.apiUrl, {
+        params: {
+          category: store.statusSearch
+        }
+      })
+      .then((results) => {
+          store.CharactersData = results.data;
+          store.isLoaded = true;
       })
     }
   },
@@ -37,7 +48,7 @@ export default {
 <template>
   <AppHeader/>
   <main class="pb-5">
-    <AppFilterCategory/>
+    <AppFilterCategory @search="getSelectedCharacter"/>
     <AppCharacterList/>
   </main>
   

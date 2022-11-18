@@ -3,6 +3,6 @@ export const store = reactive ({
     apiUrl: 'https://www.breakingbadapi.com/api/characters',
     title: 'Breaking Bad',
     CharactersData: [],
-    CharactersDataLength: 0,
+    statusSearch: '',
     isLoaded: false
 }) 

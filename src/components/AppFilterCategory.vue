@@ -1,10 +1,17 @@
 <script>
 import {categories} from '../data/data'; 
+import {store} from '../data/store';
 export default {
   name: 'AppFilterCategory',
   data() {
     return {
-      categories
+      categories,
+      store
+    }
+  },
+  methods: {
+    selectValue(value) {
+      console.log(value);
     }
   }
 }
@@ -12,9 +19,9 @@ export default {
 
 <template>
   <div class="container">
-    <select class="form-select my-5" aria-label="Default select example">
-      <option selected>Select Category</option>
-      <option v-for="category in categories" :key="category.id" :value="category.id">{{category.title}}</option>
+    <select v-model="store.statusSearch" @change="$emit('search')" class="form-select my-5" aria-label="Default select example">
+      <option selected value="">Select Category</option>
+      <option v-for="category in categories" :key="category.id" :value="category">{{category}}</option>
     </select>
   </div>
 </template>
