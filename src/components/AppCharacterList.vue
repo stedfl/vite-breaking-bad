@@ -2,11 +2,13 @@
 import {store} from '../data/store';
 import CharacterPrint from './CharacterPrint.vue';
 import Loading from './Loading.vue';
+import MoreCardInfo from './MoreCardInfo.vue';
 export default {
   name: 'AppCharacterList',
   components: {
     CharacterPrint,
-    Loading
+    Loading, 
+    MoreCardInfo
   },
   data() {
     return {
@@ -37,6 +39,8 @@ export default {
       <div class="row">
         <CharacterPrint v-for="character in store.filteredData" :key="character.char_id" :character='character'/>
       </div>
+      <MoreCardInfo v-if="store.isMoreInfo" />
+
     </div>
     <div v-else class="loading-container d-flex align-items-center">
       <Loading/>

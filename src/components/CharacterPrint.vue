@@ -1,15 +1,21 @@
 <script>
+import {store} from '../data/store';
 export default {
   name: 'CharacterPrint',
   props: {
     character: Object
+  },
+  data() {
+    return {
+      store
+    }
   }
 }
 </script>
 
 <template>
   <div  class="col-md-6 col-lg-3 p-4">
-    <div class="bb-card p-3">
+    <div @click='store.isMoreInfo=true, store.objectInfo=character' class="bb-card p-3">
       <img :src="character.img" :alt="character.name">
       <h3 class="mt-2">{{character.name}}</h3>
       <h4>{{character.category}}</h4>

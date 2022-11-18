@@ -50,6 +50,7 @@ export default {
       })
     },
     getSelectedStatus() {
+      store.isMoreInfo = false;
       if(!(store.statusSearch === "")) {
         store.filteredData = store.charactersData.filter((character) => character.status === store.statusSearch);
       } else {

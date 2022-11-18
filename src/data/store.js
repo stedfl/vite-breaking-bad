@@ -8,5 +8,7 @@ export const store = reactive ({
     categoriesList: [],
     statusSearch: '',
     statusList: [],
-    isLoaded: false
+    isLoaded: false,
+    isMoreInfo: false,
+    objectInfo: {}
 }) 
