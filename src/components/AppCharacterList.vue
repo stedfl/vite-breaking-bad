@@ -12,18 +12,21 @@ export default {
   },
   data() {
     return {
-      store
+      store,
+      isOutputResult: false
     }
   },
   computed: {
     outputResultsData() {
       let esseLetter = '';
       if(store.filteredData.length) {
+        this.isOutputResult = true;
         if (store.filteredData.length > 1) {
           esseLetter = 's'
         }
         return `Found ${store.filteredData.length} Character${esseLetter}`;
       }
+      this.isOutputResult = false;
       return "No Characters Found"
     }
   }
@@ -34,7 +37,7 @@ export default {
   <div class="container">
     <div v-if="store.isLoaded" class="container-cards p-5">
       <div class="number-results p-2">
-        <h3>{{outputResultsData}}</h3>
+        <h3>{{outputResultsData}} <span class="infos" v-if="isOutputResult"> - Click on card for more infos</span></h3>
       </div>
       <div class="row">
         <CharacterPrint v-for="character in store.filteredData" :key="character.char_id" :character='character'/>
@@ -44,11 +47,10 @@ export default {
     </div>
     <div v-else class="loading-container d-flex align-items-center">
       <Loading/>
-      <span class="ms-2">{{store.title}} is Loading</span>
+      <span class="ms-2 loading">{{store.title}} is Loading</span>
     </div>
   </div>
 </template>
-
 
 
 <style lang="scss" scoped>
@@ -62,7 +64,13 @@ export default {
   background-color: #2e3a46;
 }
 
-h3, span {
+.infos {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+h3, .loading {
   font-size: 1.2rem;
   color: white;
   font-weight: bold;
